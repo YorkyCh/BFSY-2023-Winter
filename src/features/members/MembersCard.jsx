@@ -1,6 +1,7 @@
 // MembersCard.js
 import React from "react";
 import Member from "./Member";
+import Button from "../../ui/Button";
 
 const MembersCard = ({
   activeUser,
@@ -10,11 +11,17 @@ const MembersCard = ({
   handleAddMember,
   newMember,
   setNewMember,
+  onLeaveList, // Add this prop
 }) => {
   const handleDelete = (id) => {
-    // Check if the active user is the owner and perform the deletion
     if (activeUser.role === "owner") {
       onDeleteMember(id);
+    }
+  };
+
+  const handleLeaveList = () => {
+    if (activeUser.role === "member") {
+      onLeaveList(activeUser.id);
     }
   };
 
@@ -33,7 +40,12 @@ const MembersCard = ({
             />
           </form>
         ) : (
-          ""
+          <button
+            className="text-gray-400 bg-blue-100 px-2 mt-2 rounded-lg"
+            onClick={handleLeaveList}
+          >
+            Leave
+          </button>
         )}
       </div>
       <div className="flex max-h-[450px] gap-4 m-3 justify-between items-start flex-col flex-wrap">

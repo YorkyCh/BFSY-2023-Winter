@@ -1,5 +1,6 @@
 // ShoppingList.js
 import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid"; // Import the uuid library
 import ShoppingCard from "./ShoppingCard";
 import MembersCard from "../members/MembersCard";
 
@@ -14,7 +15,7 @@ const ShoppingList = () => {
 
     if (newMember.trim() !== "") {
       const newMemberObject = {
-        id: members.length + 1,
+        id: uuidv4(), // Generate a unique ID
         name: newMember,
         role: "member",
       };
@@ -29,9 +30,13 @@ const ShoppingList = () => {
     setMembers(updatedMembers);
   };
 
+  const handleLeaveList = (userId) => {
+    const updatedMembers = members.filter((member) => member.id !== userId);
+    setMembers(updatedMembers);
+  };
+
   return (
     <div className="flex flex-row justify-between">
-      {/* Button To Test Member / Owner */}
       <button
         onClick={() =>
           setActiveUser(activeUser === members[0] ? members[1] : members[0])
@@ -39,7 +44,6 @@ const ShoppingList = () => {
       >
         Button User/Owner
       </button>
-      {/* .......................... */}
       <div className="w-5/12 h-[600px] bg-blue-600 m-12 rounded-xl flex-col">
         <ShoppingCard shoppingList={shoppingList} activeUser={activeUser} />
       </div>
@@ -52,6 +56,7 @@ const ShoppingList = () => {
           handleAddMember={handleAddMember}
           newMember={newMember}
           setNewMember={setNewMember}
+          onLeaveList={handleLeaveList}
         />
       </div>
     </div>
@@ -61,10 +66,10 @@ const ShoppingList = () => {
 export default ShoppingList;
 
 const membersArr = [
-  { id: 1, name: "Owner Name", role: "owner" },
-  { id: 2, name: "Member 1", role: "member" },
-  { id: 3, name: "Member 2", role: "member" },
-  { id: 4, name: "Member 3", role: "member" },
+  { id: uuidv4(), name: "Owner Name", role: "owner" },
+  { id: uuidv4(), name: "Member 1", role: "member" },
+  { id: uuidv4(), name: "Member 2", role: "member" },
+  { id: uuidv4(), name: "Member 3", role: "member" },
 ];
 
 const shoppingList = [
