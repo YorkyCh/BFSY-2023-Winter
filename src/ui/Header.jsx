@@ -1,70 +1,25 @@
-import { HiBars3, HiMiniXMark } from "react-icons/hi2";
-import DropDown from "./DropDown";
-import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
-import Modal from "./Modal";
-import Form from "../features/dashboard/Form";
+import React from "react";
+import { Link } from "react-router-dom";
+import { HiBars3BottomLeft } from "react-icons/hi2";
 
-const Header = ({
-  handleNav,
-  nav,
-  setActiveUser,
-  shoppingList,
-  addNewList,
-  activeUser,
-  setShowArchived,
-  showArchived,
-}) => {
-  const location = useLocation();
-  const [showModal, setShowModal] = useState(false);
-  console.log(showArchived);
-
+const Header = ({ showNav, setShowNav, setActiveUser }) => {
   return (
-    <>
-      <header className="w-screen h-[80px]">
-        <div className="p-4 flex justify-between w-full h-full items-center">
-          <div className="flex items-center gap-8">
-            <Link to={""}>
-              <h1 className="text-3xl font-bold text-blue-700 sm:text-4xl">
-                Simple Shopping
-              </h1>
-            </Link>
-          </div>
-          <div className="hidden md:flex pr-4 gap-2">
-            {location.pathname === "/" && (
-              <button onClick={() => setShowArchived(!showArchived)}>
-                {showArchived ? "Active" : "Archived"}
-              </button>
-            )}
-            {location.pathname === "/" && (
-              <button onClick={() => setShowModal(true)}>Add</button>
-            )}
-            <button onClick={() => setActiveUser(null)}>Sign Out</button>
-          </div>
-          <div className="md:hidden" onClick={handleNav}>
-            {!nav ? <HiBars3 size={25} /> : <HiMiniXMark size={25} />}
-          </div>
-        </div>
-        {nav ? (
-          <DropDown
-            setActiveUser={setActiveUser}
-            setShowArchived={setShowArchived}
-            showArchived={showArchived}
-            setShowModal={setShowModal}
-          />
-        ) : (
-          ""
-        )}
-      </header>
-      <Modal showModal={showModal} setShowModal={setShowModal}>
-        <Form
-          shoppingList={shoppingList}
-          addNewList={addNewList}
-          activeUser={activeUser}
-          setShowModal={setShowModal}
-        />
-      </Modal>
-    </>
+    <div className="col-span-4 row-span-1 border-gray-300 border-b-[1px] flex items-center justify-between p-2 lg:px-8">
+      <Link to={"/"}>
+        <h1 className="text-3xl font-bold text-blue-800 lg:text-4xl">
+          Simple Shopping
+        </h1>
+      </Link>
+      <button className="hidden lg:block" onClick={() => setActiveUser(null)}>
+        LogOut
+      </button>
+
+      <HiBars3BottomLeft
+        size={25}
+        className="lg:hidden cursor-pointer"
+        onClick={() => setShowNav(!showNav)}
+      />
+    </div>
   );
 };
 
