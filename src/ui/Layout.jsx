@@ -1,31 +1,18 @@
+import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
+import Sidebar from "./Sidebar";
 
-const Layout = ({
-  nav,
-  handleNav,
-  setActiveUser,
-  shoppingList,
-  addNewList,
-  activeUser,
-  setShowArchived,
-  showArchived,
-}) => {
+const Layout = ({ showNav, setShowNav, setActiveUser }) => {
   return (
-    <div>
+    <div className="grid grid-cols-4 grid-rows-6 h-screen">
       <Header
-        handleNav={handleNav}
-        nav={nav}
+        showNav={showNav}
+        setShowNav={setShowNav}
         setActiveUser={setActiveUser}
-        shoppingList={shoppingList}
-        addNewList={addNewList}
-        activeUser={activeUser}
-        setShowArchived={setShowArchived}
-        showArchived={showArchived}
       />
-      <main className="flex flex-col h-full">
-        <Outlet nav={nav} />
-      </main>
+      {showNav && <Sidebar setActiveUser={setActiveUser} />}
+      {showNav || <Outlet />}
     </div>
   );
 };

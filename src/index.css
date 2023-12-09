@@ -4,6 +4,6 @@
 
 @layer base {
   button {
-    @apply text-white bg-blue-600 hover:bg-blue-700 px-2 py-1 rounded-lg;
+    @apply bg-blue-600 px-2 py-1 rounded-md text-white hover:bg-blue-500 shadow-md shadow-blue-400;
   }
 }

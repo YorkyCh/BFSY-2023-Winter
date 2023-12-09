@@ -1,0 +1,173 @@
+{
+  "shoppingLists": [
+    {
+      "id": "1",
+      "name": "Christmas Party",
+      "userId": 203,
+      "items": [
+        {
+          "id": 105,
+          "name": "Champagne",
+          "quantity": 3
+        },
+        {
+          "id": 106,
+          "name": "Snacks",
+          "quantity": 5
+        }
+      ],
+      "members": [
+        {
+          "id": 203,
+          "name": "Charlie",
+          "role": "Owner"
+        }
+      ],
+      "archived": false
+    },
+    {
+      "id": "2",
+      "name": "Birthday Party",
+      "userId": 203,
+      "items": [
+        {
+          "id": 106,
+          "name": "Snacks",
+          "quantity": 5
+        }
+      ],
+      "members": [
+        {
+          "id": 203,
+          "name": "Charlie",
+          "role": "Member"
+        },
+        {
+          "id": 204,
+          "name": "David",
+          "role": "Owner"
+        },
+        {
+          "id": 205,
+          "name": "Emily",
+          "role": "Member"
+        }
+      ],
+      "archived": true
+    },
+    {
+      "id": "4",
+      "name": "Weekend BBQ",
+      "userId": 204,
+      "items": [
+        {
+          "id": 107,
+          "name": "Burgers",
+          "quantity": 10
+        },
+        {
+          "id": 108,
+          "name": "Hot Dogs",
+          "quantity": 8
+        }
+      ],
+      "members": [
+        {
+          "id": 204,
+          "name": "David",
+          "role": "Owner"
+        },
+        {
+          "id": 205,
+          "name": "Emily",
+          "role": "Member"
+        }
+      ],
+      "archived": false
+    },
+    {
+      "id": "bbcdabe7-35f2-404d-a376-2186f1f2f280",
+      "name": "Test",
+      "items": [
+        {
+          "id": "c9040c90-0092-45b9-ade9-db4e2b6d0087",
+          "name": "test",
+          "quantity": 2,
+          "archived": false
+        }
+      ],
+      "members": [
+        {
+          "id": 201,
+          "name": "Alice",
+          "role": "Owner"
+        },
+        {
+          "id": 203,
+          "name": "Charlie",
+          "role": "Member"
+        },
+        {
+          "id": 204,
+          "name": "David",
+          "role": "Member"
+        },
+        {
+          "id": 202,
+          "name": "Bob",
+          "role": "Member"
+        },
+        {
+          "id": 205,
+          "name": "Emily",
+          "role": "Member"
+        }
+      ],
+      "archived": false
+    }
+  ],
+  "users": [
+    {
+      "id": 201,
+      "name": "Alice",
+      "email": "alice@example.com",
+      "password": "password123"
+    },
+    {
+      "id": 202,
+      "name": "Bob",
+      "email": "bob@example.com",
+      "password": "password456"
+    },
+    {
+      "id": 203,
+      "name": "Charlie",
+      "email": "charlie@example.com",
+      "password": "password789"
+    },
+    {
+      "id": 204,
+      "name": "David",
+      "email": "david@example.com",
+      "password": "passwordABC"
+    },
+    {
+      "id": 205,
+      "name": "Emily",
+      "email": "emily@example.com",
+      "password": "passwordDEF"
+    },
+    {
+      "id": "48034d98-1be8-4cfc-a83c-fbf42c0f6576",
+      "name": "Tom",
+      "email": "Tom@example.com",
+      "password": "password123"
+    },
+    {
+      "id": "c0088108-e6e2-4425-aa06-d38e06d5f98b",
+      "name": "Tom",
+      "email": "Tom@example.com",
+      "password": "password123"
+    }
+  ]
+}
