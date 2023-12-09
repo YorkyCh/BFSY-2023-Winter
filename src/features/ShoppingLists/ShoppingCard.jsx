@@ -8,7 +8,7 @@ const ShoppingCard = ({ notify, activeUser, showArchived, notifyArchive }) => {
     "lists",
     getArchivedLists(showArchived ? "archived" : "active"),
     {
-      refetchInterval: 1500,
+      refetchInterval: 500,
     }
   );
 

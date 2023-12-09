@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useParams } from "react-router-dom";
-import { addMemberToList, fetchList } from "../../services/listApi";
+import { addMemberToList } from "../../services/listApi";
 import { fetchUsers } from "../../services/userApi";
 
 const AddMember = ({ owner, membersList, notify }) => {
@@ -24,14 +24,6 @@ const AddMember = ({ owner, membersList, notify }) => {
       setUsers(members);
     }
   }, [members]);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (isError) {
-    return <div>Error fetching shopping lists</div>;
-  }
 
   const mutation = useMutation(
     (newMember) => addMemberToList(listID, newMember),
