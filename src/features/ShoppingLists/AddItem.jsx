@@ -3,6 +3,8 @@ import { v4 as uuidv4 } from "uuid";
 import { addItemToList } from "../../services/listApi";
 import { useMutation, useQueryClient } from "react-query";
 import { useParams } from "react-router-dom";
+import translations from "../../data/translations.json";
+import { useLanguage } from "../../data/LanguageContext";
 
 const AddItem = () => {
   const [item, setItem] = useState("");
@@ -10,6 +12,7 @@ const AddItem = () => {
   const params = useParams();
   const listID = params.id;
   const queryClient = useQueryClient();
+  const { language } = useLanguage();
 
   const mutation = useMutation((newItem) => addItemToList(listID, newItem), {
     onSuccess: () => {
@@ -40,19 +43,25 @@ const AddItem = () => {
     setQuantity("");
   };
 
+  // translations
+
+  const btnAdd = translations[language].btnAdd;
+  const itemTranslations = translations[language].item;
+  const quantityTranslations = translations[language].quantity;
+
   return (
     <div className="md:col-span-2 p-2 ">
       <form className="lg:flex-row flex flex-col gap-2" onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="item"
+          placeholder={itemTranslations}
           className="bg-gray-100 rounded-md text-center"
           value={item}
           onChange={(e) => setItem(e.target.value)}
         />
         <input
           type="number"
-          placeholder="quantity"
+          placeholder={quantityTranslations}
           className="bg-gray-100 rounded-md text-center"
           value={quantity}
           onChange={(e) => setQuantity(e.target.value)}
@@ -61,7 +70,7 @@ const AddItem = () => {
           className="bg-blue-500 text-white rounded-md px-4"
           type="submit"
         >
-          Add
+          {btnAdd}
         </button>
       </form>
     </div>

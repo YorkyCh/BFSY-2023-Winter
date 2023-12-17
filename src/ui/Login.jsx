@@ -21,7 +21,7 @@ const LogIn = ({ setActiveUser }) => {
   };
 
   return (
-    <div className="w-screen h-screen items-center flex justify-center">
+    <div className="w-screen h-screen items-center flex justify-center dark:bg-black dark:text-white">
       <form
         className="flex flex-col items-center gap-5 w-[24rem] h-[14rem] border-blue-400 border-2 rounded-lg"
         onSubmit={handleSubmit}
@@ -31,17 +31,17 @@ const LogIn = ({ setActiveUser }) => {
           type="text"
           placeholder="Email"
           value={email}
-          className="bg-blue-200 text-center rounded-md"
+          className="bg-blue-200 text-center rounded-md dark:text-gray-600"
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
-          className="bg-blue-200 text-center rounded-md"
+          className="bg-blue-200 text-center rounded-md dark:text-gray-600"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" className="bg-blue-600 hover:bg-blue-500">
+        <button type="submit" className="bg-blue-600 hover:bg-blue-500 ">
           Log In
         </button>
       </form>

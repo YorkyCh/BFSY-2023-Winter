@@ -6,11 +6,14 @@ import CreateList from "../features/ShoppingLists/CreateList";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useQueryClient } from "react-query";
+import translations from "../data/translations.json";
+import { useLanguage } from "../data/LanguageContext";
 
 const Dashboard = ({ activeUser }) => {
   const [showModal, setShowModal] = useState(false);
   const [showArchived, setShowArchived] = useState(false);
   const queryClient = useQueryClient();
+  const { language } = useLanguage();
 
   function notifyDelete() {
     toast.success("List Deleted .", {
@@ -56,14 +59,19 @@ const Dashboard = ({ activeUser }) => {
     setShowArchived(!showArchived);
   }
 
+  // translations
+  const btnArchived = translations[language].btnArchived;
+  const btnActive = translations[language].btnActive;
+  const btnCreateList = translations[language].btnCreateList;
+
   return (
     <>
       <Box>
         <div className="flex justify-between mx-2 mt-2 md:justify-start md:ml-2 md:gap-2">
           <button onClick={handleArchived}>
-            {showArchived ? "Active" : "Archived"}
+            {showArchived ? btnActive : btnArchived}
           </button>
-          <button onClick={() => setShowModal(true)}>Create New List</button>
+          <button onClick={() => setShowModal(true)}>{btnCreateList}</button>
         </div>
         <div className="grid grid-cols-2 auto-rows-auto px-2 gap-2 lg:grid-cols-4 ">
           <ShoppingCard

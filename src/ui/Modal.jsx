@@ -18,7 +18,7 @@ const Modal = ({ setShowModal, showModal, children }) => {
         >
           X
         </h1>
-        <div className="bg-white-p-2 flex flex-col items-center justify-center gap-2 bg-white min-h-[250px] rounded-lg overflow-auto">
+        <div className="bg-white-p-2 flex flex-col items-center justify-center gap-2 bg-white min-h-[250px] rounded-lg overflow-auto dark:bg-gray-600 dark:text-white">
           {children}
         </div>
       </div>

@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import { createList } from "../../services/listApi";
 import { useMutation, useQueryClient } from "react-query";
 import { v4 as uuidv4 } from "uuid";
+import { useLanguage } from "../../data/LanguageContext";
+import translations from "../../data/translations.json";
 
 const CreateList = ({ setShowModal, notifyCreate, activeUser }) => {
   const [name, setName] = useState("");
   const queryClient = useQueryClient();
+  const { language } = useLanguage();
+
   const mutation = useMutation((newList) => createList(newList), {
     onSuccess: () => {
       notifyCreate();
@@ -33,13 +37,19 @@ const CreateList = ({ setShowModal, notifyCreate, activeUser }) => {
     setName("");
   };
 
+  // translations
+
+  const btnCreateList = translations[language].btnCreateList;
+  const btnCreate = translations[language].btnCreate;
+  const nameList = translations[language].nameList;
+
   return (
     <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-      <h1 className="font-bold text-xl">Create new Shopping List</h1>
+      <h1 className="font-bold text-xl text-center">{btnCreateList}</h1>
       <input
         type="text"
-        placeholder="name"
-        className="bg-gray-100 rounded-md text-center"
+        placeholder={nameList}
+        className="bg-gray-100 rounded-md text-center dark:text-gray-600"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
@@ -47,7 +57,7 @@ const CreateList = ({ setShowModal, notifyCreate, activeUser }) => {
         type="submit"
         className="bg-blue-600 px-2 py-1 rounded-md text-white hover:bg-blue-500 shadow-md shadow-blue-400"
       >
-        Create
+        {btnCreate}
       </button>
     </form>
   );

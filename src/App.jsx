@@ -6,6 +6,7 @@ import Layout from "./ui/Layout";
 import Dashboard from "./pages/Dashboard";
 import ShoppingListDetails from "./pages/ShoppingListDetails";
 import LogIn from "./ui/Login";
+import { LanguageProvider } from "./data/LanguageContext";
 
 const queryClient = new QueryClient();
 
@@ -15,39 +16,41 @@ const App = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Routes>
-          {/* check if activeUser is null */}
-          <Route
-            path="/"
-            element={
-              !activeUser ? (
-                <Navigate to="/login" replace />
-              ) : (
-                <Layout
-                  showNav={showNav}
-                  setShowNav={setShowNav}
-                  setActiveUser={setActiveUser}
-                />
-              )
-            }
-          >
-            {/* Nested Routes */}
-            <Route index element={<Dashboard activeUser={activeUser} />} />
+      <LanguageProvider>
+        <BrowserRouter>
+          <Routes>
+            {/* check if activeUser is null */}
             <Route
-              path="/list/:id"
-              element={<ShoppingListDetails activeUser={activeUser} />}
+              path="/"
+              element={
+                !activeUser ? (
+                  <Navigate to="/login" replace />
+                ) : (
+                  <Layout
+                    showNav={showNav}
+                    setShowNav={setShowNav}
+                    setActiveUser={setActiveUser}
+                  />
+                )
+              }
+            >
+              {/* Nested Routes */}
+              <Route index element={<Dashboard activeUser={activeUser} />} />
+              <Route
+                path="/list/:id"
+                element={<ShoppingListDetails activeUser={activeUser} />}
+              />
+            </Route>
+            {/* Login Route */}
+            <Route
+              path="login"
+              element={
+                <LogIn activeUser={activeUser} setActiveUser={setActiveUser} />
+              }
             />
-          </Route>
-          {/* Login Route */}
-          <Route
-            path="login"
-            element={
-              <LogIn activeUser={activeUser} setActiveUser={setActiveUser} />
-            }
-          />
-        </Routes>
-      </BrowserRouter>
+          </Routes>
+        </BrowserRouter>
+      </LanguageProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );

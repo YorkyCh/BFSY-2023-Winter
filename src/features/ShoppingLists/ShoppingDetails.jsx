@@ -39,7 +39,7 @@ const ShoppingDetails = ({ activeUser }) => {
 
   return (
     <>
-      <div className="grid grid-cols-1 grid-rows-6 md:grid-cols-2 md:auto-rows-auto w-screen h-[36rem]">
+      <div className="grid grid-cols-1 grid-rows-6 md:grid-cols-2 md:auto-rows-auto w-screen h-[36rem] ">
         <div className="flex items-center col-span-2">
           <div className="grid grid-cols-2 w-full">
             <h1 className="pt-4 text-2xl font-bold text-blue-800 text-center flex self-center mb-4 md:ml-20">
@@ -50,7 +50,7 @@ const ShoppingDetails = ({ activeUser }) => {
 
         {/* Items  */}
 
-        <div className="w-[80%] justify-self-center row-span-5 col-span-2 md:col-span-1 my-4 border-gray-400 border-[2px] rounded-md overflow-y-auto">
+        <div className="w-[80%] justify-self-center row-span-5 col-span-2 md:col-span-1 my-4 border-gray-400 border-[2px] rounded-md overflow-y-auto dark:bg-gray-600 dark:text-gray-400">
           <div className="flex flex-col gap-2 md:grid md:grid-cols-2">
             {/* div */}
             <AddItem />
@@ -68,7 +68,7 @@ const ShoppingDetails = ({ activeUser }) => {
 
         {/* Members  */}
 
-        <div className="w-[80%] justify-self-center row-span-5 md:col-span-1  col-span-2 my-4 border-gray-400 border-[2px] rounded-md overflow-y-auto">
+        <div className="w-[80%] justify-self-center row-span-5 md:col-span-1  col-span-2 my-4 border-gray-400 border-[2px] rounded-md overflow-y-auto dark:bg-gray-600 dark:text-gray-400">
           <div className="flex flex-col gap-2 md:grid md:grid-cols-3">
             <h1 className="flex col-span-3 justify-center font-bold text-lg mt-2">
               {data.members.find((member) => member.role === "Owner").name}

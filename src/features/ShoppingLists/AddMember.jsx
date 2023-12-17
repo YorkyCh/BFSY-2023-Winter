@@ -3,6 +3,8 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useParams } from "react-router-dom";
 import { addMemberToList } from "../../services/listApi";
 import { fetchUsers } from "../../services/userApi";
+import translations from "../../data/translations.json";
+import { useLanguage } from "../../data/LanguageContext";
 
 const AddMember = ({ owner, membersList, notify }) => {
   const [selectedMember, setSelectedMember] = useState(null);
@@ -11,7 +13,7 @@ const AddMember = ({ owner, membersList, notify }) => {
   const listID = params.id;
   const queryClient = useQueryClient();
   const listMembers = membersList.filter((user) => user.role === "Member");
-  console.log(listMembers);
+  const { language } = useLanguage();
 
   const {
     data: members,
@@ -68,6 +70,10 @@ const AddMember = ({ owner, membersList, notify }) => {
     setSelectedMember("");
   };
 
+  // translations
+  const add = translations[language].btnAdd;
+  const optionUser = translations[language].optionUser;
+
   return (
     <div className="col-span-3 p-2 flex gap-3 justify-center">
       <form className="lg:flex-row flex flex-col gap-2" onSubmit={handleSubmit}>
@@ -76,7 +82,7 @@ const AddMember = ({ owner, membersList, notify }) => {
           onChange={(e) => setSelectedMember(e.target.value)}
           className="bg-gray-100 rounded-md text-center"
         >
-          <option value="">Select a user</option>
+          <option value="">{optionUser}</option>
           {users
             .filter((user) => user.id != owner.id)
             .map((user) => (
@@ -89,7 +95,7 @@ const AddMember = ({ owner, membersList, notify }) => {
           className="bg-blue-500 text-white rounded-md px-4"
           type="submit"
         >
-          Add
+          {add}
         </button>
       </form>
     </div>

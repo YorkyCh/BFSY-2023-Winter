@@ -1,0 +1,34 @@
+{
+  "en": {
+    "dashboard": "Dashboard",
+    "logout": "Logout",
+    "optionUser": "Choose a user",
+    "item": "Item",
+    "quantity": "Quantity",
+    "btnAdd": "Add",
+    "btnArchived": "Archived",
+    "btnActive": "Active",
+    "btnArchive": "Archive",
+    "btnCreateList": "Create New List",
+    "nameList": "name",
+    "btnCreate": "create",
+    "owner": "Owner",
+    "btnDelete": "Delete"
+  },
+  "cz": {
+    "dashboard": "Nástěnka",
+    "logout": "Odhlásit se",
+    "optionUser": "Vyberte uživatele",
+    "item": "Položka",
+    "quantity": "Množství",
+    "btnAdd": "Přidat",
+    "btnArchived": "Archivováno",
+    "btnActive": "Aktivní",
+    "btnCreateList": "Vytvořit nákupní seznam",
+    "btnArchive": "Archivovat",
+    "nameList": "Název",
+    "btnCreate": "Vytvořit",
+    "owner": "Vlastník",
+    "btnDelete": "Smazat"
+  }
+}
